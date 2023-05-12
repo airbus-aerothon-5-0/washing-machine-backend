@@ -7,10 +7,7 @@ import com.example.washingmachinebackend.service.FabricationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -28,7 +25,7 @@ public class FabricationController {
     }
 
     @PostMapping("/createFabrication")
-    public ResponseEntity<?> createFabrication(FabricationDao fabricationDao) {
+    public ResponseEntity<?> createFabrication(@RequestBody FabricationDao fabricationDao) {
         try {
             this.fabricationService.createFabrication(fabricationDao);
             System.out.println("Fabrication created successfully");
@@ -39,7 +36,7 @@ public class FabricationController {
     }
 
     @PostMapping("/updateFabrication")
-    public ResponseEntity<?> updateFabrication(FabricationDao fabricationDao) {
+    public ResponseEntity<?> updateFabrication(@RequestBody FabricationDao fabricationDao) {
         try {
             this.fabricationService.updateFabrication(fabricationDao);
             System.out.println("Fabrication updated successfully");
@@ -49,8 +46,8 @@ public class FabricationController {
         }
     }
 
-    @PostMapping("/deleteFabrication")
-    public ResponseEntity<?> deleteFabrication(int fabricationId) {
+    @DeleteMapping("/deleteFabrication/{fabricationId}")
+    public ResponseEntity<?> deleteFabrication(@PathVariable int fabricationId) {
         try {
             this.fabricationService.deleteFabrication(fabricationId);
             System.out.println("Fabrication deleted successfully");
