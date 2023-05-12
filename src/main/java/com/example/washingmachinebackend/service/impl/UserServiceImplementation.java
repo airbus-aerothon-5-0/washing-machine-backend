@@ -31,7 +31,6 @@ public class UserServiceImplementation implements UserService {
     public void createUser(UserRequest userRequest) {
 
         User user = mapUserRequestToUser(userRequest);
-        user.setPassword(this.passwordEncoder.encode(user.getPassword()));
         userRepo.save(user);
     }
 

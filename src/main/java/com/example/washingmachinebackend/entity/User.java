@@ -32,9 +32,9 @@ public class User implements UserDetails {
     private String password;
 
     @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-    @JoinTable(name = "user_role",
-             joinColumns = @JoinColumn(name="user_id", referencedColumnName = "id"),
-             inverseJoinColumns = @JoinColumn(name= "role_id",referencedColumnName = "id")
+            @JoinTable(name = "user_role",
+            joinColumns = @JoinColumn(name="user_id", referencedColumnName = "id"),
+            inverseJoinColumns = @JoinColumn(name= "role_id",referencedColumnName = "id")
     )
     private Set<Role> roles = new HashSet<>();
 
