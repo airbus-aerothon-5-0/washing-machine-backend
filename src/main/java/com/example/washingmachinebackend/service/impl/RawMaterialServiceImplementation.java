@@ -62,6 +62,11 @@ public class RawMaterialServiceImplementation implements RawMaterialService {
     }
 
     @Override
+    public RawMaterials getRawMaterial(int id) {
+        return   rawMaterialRepo.findByRawMaterialId(id);
+    }
+
+    @Override
     public void deleteRawMaterials(int raw_material_id) {
         RawMaterials rawMaterials = rawMaterialRepo.findByRawMaterialId(raw_material_id);
 

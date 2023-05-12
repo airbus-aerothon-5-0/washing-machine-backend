@@ -1,16 +1,18 @@
 package com.example.washingmachinebackend.service;
 
+import com.example.washingmachinebackend.entity.Fabrication;
+import com.example.washingmachinebackend.payload.FabricationDao;
 import com.example.washingmachinebackend.payload.RawMaterialDao;
 
 import java.util.List;
 
 public interface FabricationService {
 
-    void createFabrication(RawMaterialDao rawMaterialDao);
+    void createFabrication(FabricationDao fabricationDao);
 
-    void  updateFabrication(RawMaterialDao rawMaterialDao);
+    void  updateFabrication(FabricationDao fabricationDao);
 
-    List<RawMaterialDao> getAllFabrication();
+    List<Fabrication> getAllFabrication();
 
-    void deleteFabrication(int raw_material_id);
+    void deleteFabrication(int fabrication_id);
 }
