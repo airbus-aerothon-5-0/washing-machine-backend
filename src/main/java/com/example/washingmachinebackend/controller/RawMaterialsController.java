@@ -5,10 +5,7 @@ import com.example.washingmachinebackend.service.RawMaterialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -26,8 +23,9 @@ public class RawMaterialsController {
     }
 
     @PostMapping("/createRawMaterials")
-    public ResponseEntity<?> createRawMaterials(RawMaterialDao rawMaterialDao) {
+    public ResponseEntity<?> createRawMaterials(@RequestBody  RawMaterialDao rawMaterialDao) {
         try {
+            System.out.println(rawMaterialDao);
             this.rawMaterialService.createRawMaterial(rawMaterialDao);
             System.out.println("Raw Material created successfully");
              return new ResponseEntity<>("Raw Material Created Successfully", HttpStatus.CREATED);
@@ -37,7 +35,7 @@ public class RawMaterialsController {
     }
 
     @PostMapping("/updateRawMaterials")
-    public ResponseEntity<?> updateRawMaterials(RawMaterialDao rawMaterialDao) {
+    public ResponseEntity<?> updateRawMaterials(@RequestBody  RawMaterialDao rawMaterialDao) {
         try {
             this.rawMaterialService.updateRawMaterial(rawMaterialDao);
             System.out.println("Raw Material updated successfully");
@@ -47,8 +45,8 @@ public class RawMaterialsController {
         }
     }
 
-    @PostMapping("/deleteRawMaterials")
-    public ResponseEntity<?> deleteRawMaterials(int rawMaterialId) {
+    @DeleteMapping("/deleteRawMaterials/{rawMaterialId}")
+    public ResponseEntity<?> deleteRawMaterials(@PathVariable int rawMaterialId) {
         try {
             this.rawMaterialService.deleteRawMaterials(rawMaterialId);
             System.out.println("Raw Material deleted successfully");

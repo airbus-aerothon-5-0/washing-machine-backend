@@ -3,9 +3,11 @@ package com.example.washingmachinebackend.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.Hibernate;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.Collection;
 import java.util.HashSet;
@@ -31,15 +33,14 @@ public class User implements UserDetails {
     private String username;
     private String password;
 
-    @ManyToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER)
-            @JoinTable(name = "user_role",
-            joinColumns = @JoinColumn(name="user_id", referencedColumnName = "id"),
-            inverseJoinColumns = @JoinColumn(name= "role_id",referencedColumnName = "id")
-    )
+    @ManyToMany(fetch = FetchType.EAGER)
     private Set<Role> roles = new HashSet<>();
 
     @Override
+    @Transactional
     public Collection<? extends GrantedAuthority> getAuthorities() {
+
+        Hibernate.initialize(roles);
         List<SimpleGrantedAuthority> authorityList= this.roles.stream()
                 .map((role)-> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
         return authorityList;
