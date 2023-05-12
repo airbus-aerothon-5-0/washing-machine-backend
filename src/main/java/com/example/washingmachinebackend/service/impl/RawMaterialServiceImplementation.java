@@ -55,6 +55,7 @@ public class RawMaterialServiceImplementation implements RawMaterialService {
                     rawMaterialDao.setQuantity_unit(rawMaterial.getQuantity_unit());
                     rawMaterialDao.setQuantity_value(rawMaterial.getQuantity_value());
                     rawMaterialDao.setItem_name(rawMaterial.getItem_name());
+                    rawMaterialDao.setId(rawMaterial.getId());
                     return rawMaterialDao;
                 })
                 .collect(Collectors.toList());

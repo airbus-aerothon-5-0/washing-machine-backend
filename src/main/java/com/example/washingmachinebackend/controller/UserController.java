@@ -97,9 +97,6 @@ public class UserController {
         }
 
     }
-
-
-//    @PreAuthorize("hasRole('data officer')")
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody UserRequest userRequest){
         System.out.println(userRequest);
