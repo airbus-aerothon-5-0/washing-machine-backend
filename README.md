@@ -11,12 +11,12 @@ It is developed using Spring Boot, Java, JWT, Spring Security and Postgres.
 **How to use?:**
 * You can Clone this repo : https://github.com/airbus-aerothon-5-0/washing-machine-backend.git.
 * Set-up the local environment and then we can test with postman and posgresql.
-* Add application.properties file in project_path/src/main/resources with following parameters :
-* 
+* Add application.properties file in project_path/src/main/resources with following parameters.
+* Below are the parameters of application.properties file :-
 * server.port = 8080
-* spring.datasource.url=jdbc:postgresql://localhost:5432/washing_machine
-* spring.datasource.username=postgres
-* spring.datasource.password=Gautam@456
+* spring.datasource.url=
+* spring.datasource.username=
+* spring.datasource.password=
 * spring.datasource.driver-class-name=org.postgresql.Driver
 * spring.jpa.database-platform=org.hibernate.dialect.PostgreSQLDialect
 * spring.jpa.hibernate.ddl-auto=
