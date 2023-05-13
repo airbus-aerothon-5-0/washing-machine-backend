@@ -12,4 +12,7 @@ public interface FabricationRepo extends JpaRepository<Fabrication, Integer> {
 
     @Query(value = "SELECT * FROM fabricatiton", nativeQuery = true)
     List<Fabrication> getAllFabrications();
+
+    @Query(value = "SELECT * FROM fabricatiton WHERE item_id = :item_id", nativeQuery = true)
+    Fabrication getFabricationByItemId(String item_id);
 }
