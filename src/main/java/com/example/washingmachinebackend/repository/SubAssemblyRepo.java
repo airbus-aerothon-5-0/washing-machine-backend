@@ -14,4 +14,6 @@ public interface SubAssemblyRepo extends JpaRepository<SubAssembly, Integer> {
 
     @Query(value = "SELECT * FROM sub_assembly WHERE assembly_id = :assembly_id", nativeQuery = true)
     SubAssembly findAllSubAssemblyByAssemblyId(String assembly_id);
+
+
 }
