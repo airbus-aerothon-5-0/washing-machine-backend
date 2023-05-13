@@ -1,6 +1,7 @@
 package com.example.washingmachinebackend.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import jakarta.persistence.*;
 import lombok.Data;
 
@@ -22,8 +23,8 @@ public class Fabrication {
     private Date in_date;
     private Date out_date;
 
-    @JsonIgnore
-    @ManyToOne(fetch = FetchType.EAGER)
+    @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"})
+    @ManyToOne
     private  RawMaterials rawMaterials;
 
 }
