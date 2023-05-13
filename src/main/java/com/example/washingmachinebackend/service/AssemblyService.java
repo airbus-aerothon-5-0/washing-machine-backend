@@ -9,7 +9,6 @@ import com.example.washingmachinebackend.payload.SubAssemblyDao;
 import java.util.List;
 
 public interface AssemblyService {
-
     void createAssembly(AssemblyDao assemblyDao);
 
     void  updateAssembly(AssemblyDao assemblyDao);

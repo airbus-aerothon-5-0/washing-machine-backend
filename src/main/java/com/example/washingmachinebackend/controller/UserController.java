@@ -78,10 +78,6 @@ public class UserController {
         JwtAuthResponse response = new JwtAuthResponse();
         response.setToken(token);
         response.setRole_name(roleNames);
-
-
-
-
         return new ResponseEntity<>(response, HttpStatus.OK);
     }
     private void authenticate(String username, String password) throws Exception {
@@ -97,6 +93,7 @@ public class UserController {
         }
 
     }
+//    @PreAuthorize("hasAuthority('data officer')")
     @PostMapping("/register")
     public ResponseEntity<?> registerUser(@RequestBody UserRequest userRequest){
         System.out.println(userRequest);

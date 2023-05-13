@@ -7,6 +7,7 @@ import com.example.washingmachinebackend.service.FabricationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,6 +25,7 @@ public class FabricationController {
          return new ResponseEntity<>(fabricationDaoList, HttpStatus.OK);
     }
 
+    @PreAuthorize("hasAuthority('fabrication')")
     @PostMapping("/createFabrication")
     public ResponseEntity<?> createFabrication(@RequestBody FabricationDao fabricationDao) {
         try {
@@ -35,6 +37,7 @@ public class FabricationController {
         }
     }
 
+    @PreAuthorize("hasAuthority('fabrication')")
     @PostMapping("/updateFabrication")
     public ResponseEntity<?> updateFabrication(@RequestBody FabricationDao fabricationDao) {
         try {
@@ -46,6 +49,7 @@ public class FabricationController {
         }
     }
 
+    @PreAuthorize("hasAuthority('fabrication')")
     @DeleteMapping("/deleteFabrication/{fabricationId}")
     public ResponseEntity<?> deleteFabrication(@PathVariable int fabricationId) {
         try {
