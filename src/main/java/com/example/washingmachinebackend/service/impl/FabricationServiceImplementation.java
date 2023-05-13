@@ -25,9 +25,13 @@ public class FabricationServiceImplementation implements FabricationService {
         fabrication.setIn_date(fabricationDao.getIn_date());
         fabrication.setOut_date(fabricationDao.getOut_date());
         fabrication.setRawMaterials(rawMaterialServiceImplementation.getRawMaterial(fabricationDao.getRaw_material_id()));
+        fabrication.setItem_id("default");
+        Fabrication updatedFabrication = fabricationRepo.save(fabrication);
+        System.out.println(updatedFabrication);
+        updatedFabrication.setItem_id("T"+updatedFabrication.getId());
+        System.out.println(updatedFabrication);
+        fabricationRepo.save(updatedFabrication);
 
-        fabricationRepo.save(fabrication);
-        updateFabrication(fabricationDao);
     }
 
     @Override

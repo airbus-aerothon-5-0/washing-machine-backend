@@ -23,6 +23,6 @@ public class RawMaterials {
     private String quantity_unit;
 
 
-    @OneToMany(mappedBy = "rawMaterials",cascade = CascadeType.ALL)
-    private List<Fabrication> fabricationList= new ArrayList<>();
+//    @OneToMany(mappedBy = "rawMaterials",cascade = CascadeType.ALL)
+//    private List<Fabrication> fabricationList= new ArrayList<>();
 }

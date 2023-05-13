@@ -6,7 +6,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface FabricationRepo extends JpaRepository<Fabrication,String> {
+public interface FabricationRepo extends JpaRepository<Fabrication, Integer> {
     @Query(value = "SELECT * FROM fabricatiton WHERE id = :id", nativeQuery = true)
     Fabrication getFabricationByID(Integer id);
 

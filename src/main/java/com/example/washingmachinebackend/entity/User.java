@@ -41,7 +41,7 @@ public class User implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
 
         Hibernate.initialize(roles);
-        List<SimpleGrantedAuthority> authorityList= this.roles.stream()
+        List<SimpleGrantedAuthority> authorityList= roles.stream()
                 .map((role)-> new SimpleGrantedAuthority(role.getName())).collect(Collectors.toList());
         return authorityList;
     }
