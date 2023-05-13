@@ -5,6 +5,7 @@ import com.example.washingmachinebackend.service.RawMaterialService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -22,6 +23,7 @@ public class RawMaterialsController {
        return new ResponseEntity<>(rawMaterials, HttpStatus.OK);
     }
 
+    @PreAuthorize("hasAuthority('data officer')")
     @PostMapping("/createRawMaterials")
     public ResponseEntity<?> createRawMaterials(@RequestBody  RawMaterialDao rawMaterialDao) {
         try {
@@ -34,6 +36,7 @@ public class RawMaterialsController {
         }
     }
 
+    @PreAuthorize("hasAuthority('data officer')")
     @PostMapping("/updateRawMaterials")
     public ResponseEntity<?> updateRawMaterials(@RequestBody  RawMaterialDao rawMaterialDao) {
         try {
@@ -45,6 +48,7 @@ public class RawMaterialsController {
         }
     }
 
+    @PreAuthorize("hasAuthority('data officer')")
     @DeleteMapping("/deleteRawMaterials/{rawMaterialId}")
     public ResponseEntity<?> deleteRawMaterials(@PathVariable int rawMaterialId) {
         try {
